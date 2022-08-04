@@ -1,9 +1,39 @@
-h1{
-    color: blue;
+html,body{
+    margin: 0;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+
+
+}
+a{
+    text-decoration: none;
 }
 
-p{
-    text-align: right;
-    color: red;
-    background-color: aquamarine;
+.navbar{
+    background-color: aliceblue;
+    padding: 3rem 2rem;
+    height: 0rem;
+    min-height: 12vh;
+    font-size: 15px;
+}
+
+.navbar .navbar-brand a{
+    padding: 1rem 0;
+    display: block;
+    text-decoration: none;
+}
+.navbar-brand{
+    font-size: 50px;
+}
+
+
+/* slider  */
+
+.carousel-item{
+    height: 90vh;
+    min-height: 200px;
+    background: no-repeat scroll center scroll;
+    -webkit-background-size:cover;
+    background-size: cover;
 }
