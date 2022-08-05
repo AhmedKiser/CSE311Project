@@ -37,3 +37,14 @@ a{
     -webkit-background-size:cover;
     background-size: cover;
 }
+
+input,textarea{
+    width: 80%;
+    margin: 11px;
+    padding: 7px;
+    display: block;
+}
+button{
+    margin:10px;
+    display:block
+}
