@@ -5,8 +5,9 @@
     $server = "localhost";
     $username = "root";
     $password = "";
+    $database = 'registration';
 
-    $conn = mysqli_connect($server,$username,$password);
+    $conn = mysqli_connect($server,$username,$password,$database);
 
 
     if(!$conn){
@@ -21,7 +22,14 @@
     $gender = $_POST['gender'];
 
 
-    $sql = "INSERT INTO 'reg'.`reg` (`age`, `email`, `phone`, `gender`, `name`, `dt`) VALUES ('$age', '$email', '$phone', '$gender', '$name', current_timestamp());";
+    $sql = "INSERT INTO `reg` (`age`, `email`, `phone`, `gender`, `name`, `dt`) VALUES ('$age', '$email', '$phone', '$gender', '$name', current_timestamp());";
+    echo $sql;
+
+    if($conn->query($sql)==true){
+        echo "successfull";
+    }
+    else 
+        echo "fail";
 }
 ?>
 
@@ -48,4 +56,5 @@
             <button class="btn" id="reset">reset</button>
         </form>
     </div>
-    
+    </body>
+</html>
