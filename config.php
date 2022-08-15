@@ -5,7 +5,7 @@
     define('DB_PASSWORD','');
     define('DB_NAME','login');
 
-    //connection
+  
 
     $conn = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
