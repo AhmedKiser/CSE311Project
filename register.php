@@ -1,4 +1,3 @@
-
 <?php
 require_once "config.php";
 
@@ -7,7 +6,7 @@ $username_err = $password_err = $confirm_password_err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    
+    // Check if username is empty
     if(empty(trim($_POST["username"]))){
         $username_err = "Username cannot be blank";
     }
@@ -41,147 +40,149 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     mysqli_stmt_close($stmt);
 
 
-    // Check for password
-    if(empty(trim($_POST['password']))){
-        $password_err = "Password cannot be blank";
-    }
-    elseif(strlen(trim($_POST['password'])) < 5){
-        $password_err = "Password cannot be less than 5 characters";
-    }
-    else{
-        $password = trim($_POST['password']);
-    }
+// Check for password
+if(empty(trim($_POST['password']))){
+    $password_err = "Password cannot be blank";
+}
+elseif(strlen(trim($_POST['password'])) < 5){
+    $password_err = "Password cannot be less than 5 characters";
+}
+else{
+    $password = trim($_POST['password']);
+}
 
-    // Check for confirm password field
-    if(trim($_POST['password']) !=  trim($_POST['confirm_password'])){
-        $password_err = "Passwords should match";
-    }
+// Check for confirm password field
+if(trim($_POST['password']) !=  trim($_POST['confirm_password'])){
+    $password_err = "Passwords should match";
+}
 
 
-    // If there were no errors, go ahead and insert into the database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
+// If there were no errors, go ahead and insert into the database
+if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
+{
+    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    $stmt = mysqli_prepare($conn, $sql);
+    if ($stmt)
     {
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-        if ($stmt)
+        mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+
+        // Set these parameters
+        $param_username = $username;
+        $param_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Try to execute the query
+        if (mysqli_stmt_execute($stmt))
         {
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-
-            // Set these parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Try to execute the query
-            if (mysqli_stmt_execute($stmt))
-            {
-                header("location: login.php");
-            }
-            else{
-                echo "Something went wrong... cannot redirect!";
-            }
+            header("location: login.php");
         }
-        mysqli_stmt_close($stmt);
+        else{
+            echo "Something went wrong... cannot redirect!";
+        }
     }
-    mysqli_close($conn);
-    }
+    mysqli_stmt_close($stmt);
+}
+mysqli_close($conn);
+}
 
 ?>
+
+
+
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>PHP login system!</title>
   </head>
   <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Php Login System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="register.php">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.php">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>
+
+      
+     
+    </ul>
   </div>
 </nav>
-    
 
-    <div class="container mt-5">
-            <h1>register Here</h1>
-            <form class="row g-3" method="post">
-        <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="inputEmail4">
-        </div>
-        <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="inputPassword4">
-        </div>
-        <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" name="confirm_password" id="inputPassword4">
-        </div>
-        <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-                Check me out
-            </label>
-            </div>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-        </form>
+<div class="container mt-4">
+<h3>Please Register Here:</h3>
+<hr>
+<form action="" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Username</label>
+      <input type="text" class="form-control" name="username" id="inputEmail4" placeholder="Email">
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" name ="password" id="inputPassword4" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="inputPassword4">Confirm Password</label>
+      <input type="password" class="form-control" name ="confirm_password" id="inputPassword" placeholder="Confirm Password">
+    </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
