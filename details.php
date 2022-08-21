@@ -12,7 +12,7 @@ include 'connect.php';?>
   </head>
   <body>
     <div class="container">
-    <button class="btn btn-primary my-5"><a href="user.php" class="text-light"> Add User</a></button>
+    <button class="btn btn-primary my-5"><a href="display.php" class="text-light"> go back</a></button>
     </div>
     <div class="container">
     <table class="table">
@@ -22,14 +22,20 @@ include 'connect.php';?>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-      <th scope="col">Operation</th>
+
     </tr>
   </thead>
   <tbody>
 
     <?php
-    $sql = "SELECT * FROM `crud`";
-    $result = mysqli_query($con,$sql);
+    if(isset($_GET['detailsid'])){
+        $id = $_GET['detailsid'];
+    
+        $sql = "select * from `crud` where id = $id ";
+        $result = mysqli_query($con,$sql);
+    
+    // $sql = "SELECT * FROM `crud`";
+    // $result = mysqli_query($con,$sql);
     if($result){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
@@ -42,17 +48,13 @@ include 'connect.php';?>
             <td>'.$name.'</td>
             <td>'.$email.'</td>
             <td>'.$phone.'</td>
-            <td>
-          <button class="btn btn-primary"><a href="update.php?updateid='.$id.'" class="text-light">Update</a></button>
-          <button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"class="text-light">Delete</a></button>
-          <button class="btn btn-success"><a href="details.php?detailsid='.$id.'"class="text-light">Details</a></button>
-          </td>
           </tr>'
           ;
           
         }
 
     }
+}
 
 
     ?>
