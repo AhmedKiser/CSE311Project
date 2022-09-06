@@ -51,6 +51,40 @@ if(isset($_POST['name'])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Total Student number</h5>
+    
+                <?php
+                $con = mysqli_connect("localhost","root","","login");
+                  $query = "select id from users order by id";
+                  $query_run = mysqli_query($con,$query);
+                  $row = mysqli_num_rows($query_run);
+                  echo '<h1> '.$row.' </h1>'
+                ?>
+                 <a href="display.php" class="btn btn-primary">Show Student</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+          <h5 class="card-title">Total Teacher number</h5>
+    
+              <?php
+              $con = mysqli_connect("localhost","root","","login");
+                $query = "select id from users order by id";
+                $query_run = mysqli_query($con,$query);
+                $row = mysqli_num_rows($query_run);
+                echo '<h1> '.$row.' </h1>'
+                    ?>
+                    <a href="teacher.php" class="btn btn-primary">Show Teacher</a>
+        </div>
+      </div>
+    </div>
+</div>
     <!-- <img class="bg" src="bg.jpg" alt="IIT Kharagpur"> -->
     <div class="container">
         <h1>Welcome to registration form</h3>

@@ -1,86 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0d6efd;
-  }
-a{
-    text-decoration: none;
-}
-
-.navbar{
-    background-color: aliceblue;
-    padding: 3rem 2rem;
-    height: 0rem;
-    min-height: 12vh;
-    font-size: 15px;
-}
-
-.navbar .navbar-brand a{
-    padding: 1rem 0;
-    display: block;
-    text-decoration: none;
-}
-.navbar-brand{
-    font-size: 50px;
-}
-
-
-/* slider  */
-
-.carousel-item{
-    height: 90vh;
-    min-height: 200px;
-    background: no-repeat scroll center scroll;
-    -webkit-background-size:cover;
-    background-size: cover;
-}
-
-input,textarea{
-    width: 80%;
-    margin: 11px;
-    padding: 7px;
-    display: block;
-}
-button{
-    margin:10px;
-    display:block
-}
-
-
-/* card */
-.ourCard{
-    margin-top: 50px;
-}
-
-.card{
-    margin-top: 500px;
-    width: 18rem;
-}
-
-#frm{  
-    border: solid gray 1px;  
-    width:25%;  
-    border-radius: 2px;  
-    margin: 120px auto;  
-    background: white;  
-    padding: 50px;  
-}  
-#btn{  
-    color: #fff;  
-    background: #337ab7;  
-    padding: 7px;  
-    margin-left: 70%;  
-}  
-
-
 *{
     margin: 0;
     padding: 0;
@@ -89,7 +6,7 @@ button{
 .main
 {
     width: 100%;
-    background-image: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url("Covid-19_2.jpg");
+    background-image: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url("brooke-cagle-g1Kr4Ozfoac-unsplash.jpg");
     background-position: center;
     background-size: cover;
     height: 100vh;

@@ -30,7 +30,7 @@ a:hover{
     color: red important;
 }
 
-/* slider */
+
 
 .carousel-item{
     height: 100vh;
@@ -40,3 +40,4 @@ a:hover{
     background-size: cover;
     
 }
+
