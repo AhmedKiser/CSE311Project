@@ -8,19 +8,19 @@ body{
 button{
     width: 400px;
     height: 80px;
-    background: #e9cc28a9;
+    background: #0c0c0ca9;
     border: none;
     margin-top: 10px;
     font-size: 25px;
     border-radius: 10px;
     cursor: pointer;
-    color: #000000e8;
+    color: #ce1a1ae8;
     transition: 0.4s ease;
 }
 
 button:hover{
-    background: #e9cc28a9;
-    color: #fffffae8;
+    background: rgb(170, 27, 27);
+    color: rgb(13, 13, 14);
 }
 
 button a{
@@ -30,7 +30,7 @@ button a{
 }
 
 h4{
-    color:rgb(224, 224, 91);
+    color:rgb(16, 16, 15);
   	text-align: center;
   	font-family: sans-serif;
   	font-size: 300%;
@@ -156,7 +156,7 @@ ul li
 ul li a
 {
     text-decoration: none;
-    color: #fff;
+    color: rgb(13, 12, 12);
     font-family: Arial;
     font-weight: bold;
     transition: 0.4s ease-in-out;
@@ -164,7 +164,7 @@ ul li a
 
 ul li a:hover
 {
-    color: #e9cc28a9;
+    color: black;
 }
 
 .search
@@ -180,7 +180,7 @@ ul li a:hover
     width: 200px;
     height: 40px;
     background: transparent;
-    border: 1px solid #e9cc28a9;
+    border: 1px solid black;
     margin-top: 13px;
     color: #fff;
     border-right: none;
@@ -195,7 +195,7 @@ ul li a:hover
 {
     width: 240px;
     height: 40px;
-    background: #e9cc28a9;
+    background: black;
     border: none;
     margin-top: 30px;
     font-size: 18px;
@@ -207,7 +207,7 @@ ul li a:hover
 .btnn:hover
 {
     background: #e9cc28a9;
-    color: #fffffae8;
+    color: #0c0c0be8;
 }
 .btnn a{
     text-decoration: none;
@@ -216,35 +216,31 @@ ul li a:hover
 }
 
 p{
-    color:yellow;
+    color:red;
     text-align:center;
   	font-family:'Times New Roman', Times, serif;
   	font-size: 150%;
 }
 
 h3{
-    color: yellowgreen;
+    color: rgb(8, 9, 10);
     text-align: center;
   	font-family:Arial, Helvetica, sans-serif;
   	font-size: 220%;
 }
 
-h2{
-    color: blanchedalmond;
-    text-align: center;
-  	font-family:Arial, Helvetica, sans-serif;
-  	font-size: 180%;
-}
+
 
 pre{
-    color:whitesmoke;
+    color:red;
+    font-weight: bold;
     text-align: center;
   	font-family:'Times New Roman', Times, serif;
-  	font-size: 150%;
+  	font-size: 200%;
 }
 
 .aboutback{
-    background-image: url("brooke-cagle-g1Kr4Ozfoac-unsplash.jpg");
+    background-image: url("about.jpg");
     background-size: 1920px 1080px;
     background-repeat: no-repeat;
     background-attachment: fixed;

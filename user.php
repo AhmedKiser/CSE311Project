@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
   </div>
   
   <div class="mb-3">
-    <label class="form-label">Name</label>
+    <label class="form-label">Password</label>
     <input type="text" class="form-control"  placeholder="Enter your password" name = "password">
   </div>
   
