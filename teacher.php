@@ -12,7 +12,7 @@ include 'config.php';?>
   </head>
   <body>
     <div class="container">
-    <button class="btn btn-primary my-5"><a href="user.php" class="text-light"> Add User</a></button>
+    <button class="btn btn-primary my-5"><a href="teacher_add.php" class="text-light"> Add User</a></button>
     </div>
     <div class="container">
     <table class="table">
@@ -35,7 +35,7 @@ include 'config.php';?>
             $id = $row['id'];
             $name = $row['name'];
             $email = $row['email'];
-            $phone = $row['mobile'];
+            $phone = $row['phone'];
             
             echo '<tr>
             <th scope="row">'.$id.'</th>
@@ -43,8 +43,8 @@ include 'config.php';?>
             <td>'.$email.'</td>
             <td>'.$phone.'</td>
             <td>
-          <button class="btn btn-primary"><a href="update.php?updateid='.$id.'" class="text-light">Update</a></button>
-          <button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"class="text-light">Delete</a></button>
+          <button class="btn btn-primary"><a href="teacher_update.php?updateTid='.$id.'" class="text-light">Update</a></button>
+          <button class="btn btn-danger"><a href="teacher_dlt.php?deleteid='.$id.'"class="text-light">Delete</a></button>
           <button class="btn btn-success"><a href="details.php?detailsid='.$id.'"class="text-light">Details</a></button>
           </td>
           </tr>'

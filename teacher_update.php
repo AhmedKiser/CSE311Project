@@ -1,16 +1,17 @@
 <?php
 
 include 'config.php';
-
+$id = $_GET['updateTid'];
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'] ;
     $password = $_POST['address'];
 
-    $sql = "INSERT INTO `teacher`( `name`, `email`, `phone`, `address`) VALUES ('$name','$email','$phone','$password')";
+    $sql = "update teacher set  `name`='$name',  `email`='$email',`phone`='$phone',`address`='$password' where `id`='$id' ";
     $result = mysqli_query($conn,$sql);
     if($result){
+        // echo "Data inserted successful";
         header('location:teacher.php');
     }else
         die(mysqli_error($conn));
@@ -52,7 +53,7 @@ if(isset($_POST['submit'])){
   
 
   <div class="mb-3">
-  <button type="submit" class="btn btn-primary" name = 'submit'>Submit</button>
+  <button type="submit" class="btn btn-primary" name = 'submit'>update</button>
 </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

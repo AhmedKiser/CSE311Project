@@ -40,7 +40,7 @@
     
               <?php
               $con = mysqli_connect("localhost","root","","login");
-                $query = "select id from users order by id";
+                $query = "select id from teacher order by id";
                 $query_run = mysqli_query($con,$query);
                 $row = mysqli_num_rows($query_run);
                 echo '<h1> '.$row.' </h1>'

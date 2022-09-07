@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
     margin: 0;
     padding: 0;
@@ -277,13 +277,7 @@ ul li a:hover
     color: #fffffae8;
 }
 
-=======
-html{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppons', sans-serif;
-}
+
 body{
     display: flex;
     justify-content:center;
@@ -334,5 +328,4 @@ body{
     font-weight:500;
     border:none;
  }
- 
->>>>>>> 56f1359a464297ae369c650ed862cc5e7de0e856
+

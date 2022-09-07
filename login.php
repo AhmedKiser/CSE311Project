@@ -1,6 +1,9 @@
+
 <?php
+//This script will handle login
 session_start();
 
+// check if the user is already logged in
 if(isset($_SESSION['username']))
 {
     header("location: welcome.php");
@@ -11,7 +14,7 @@ require_once "config.php";
 $username = $password = "";
 $err = "";
 
-
+// if request method is post
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if(empty(trim($_POST['username'])) || empty(trim($_POST['password'])))
     {
@@ -25,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT id, username FROM users WHERE username = ?";
+    $sql = "SELECT id, username, password FROM users WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_username);
     $param_username = $username;

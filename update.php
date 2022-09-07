@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $phone = $_POST['phone'] ;
     $password = $_POST['password'];
 
-    $sql = "update `crud` set  name='$name' email='$email',mobile='$phone',password='$password' where id='$id' ";
+    $sql = "update `crud` set  name='$name' ,email='$email',mobile='$phone',password='$password' where id='$id' ";
     $result = mysqli_query($con,$sql);
     if($result){
         // echo "Data inserted successful";
@@ -59,3 +59,4 @@ if(isset($_POST['submit'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
+
