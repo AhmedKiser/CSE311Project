@@ -58,31 +58,31 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !==true)
 </nav>
 
 <div class="container mt-4">
-<h3><?php echo "Welcome ". $_SESSION['username']?>! You can now use this website</h3>
+<h3 stye="background-color:red;"><?php echo "Welcome ". $_SESSION['username']?>! You can now use this website</h3>
 <hr>
 
 </div>
 
 <div class="container">
-  <div class="card" style="margin-top: 200px;">
+  <div class="card" style="margin-top:100px;background-color:skyblue">
       
     
+      <div class="card-body">
+        <h5 class="card-title">Courses </h5>
+        <p class="card-text"></p>
+        <a href="courses.html" class="btn btn-primary">Classes</a>
+        
+      </div>
+    </div>
+  <div class="card" style="margin-top: 200px;background-color:skyblue">
+      
     <div class="card-body">
-      <h5 class="card-title">Physics</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="physics Metarials.html" class="btn btn-primary">Login</a>
+      <h5 class="card-title">Attendence</h5>
+      <p class="card-text"></p>
+      <a href="" class="btn btn-primary">Classes</a>
     </div>
   </div>
-  <div class="card" style="margin-top: 100px;">
-      
-    
-    <div class="card-body">
-      <h5 class="card-title">Student </h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="CSE311 metarials.html" class="btn btn-primary">Login</a>
-      
-    </div>
-  </div>
+
 </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
