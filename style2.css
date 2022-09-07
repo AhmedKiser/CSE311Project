@@ -216,7 +216,7 @@ ul li a:hover
 }
 
 p{
-    color:rgb(31, 147, 193);
+    color:red;
     text-align:center;
   	font-family:'Times New Roman', Times, serif;
   	font-size: 150%;
@@ -232,7 +232,7 @@ h3{
 
 
 pre{
-    color:rgb(5, 59, 121);
+    color:red;
     font-weight: bold;
     text-align: center;
   	font-family:'Times New Roman', Times, serif;
