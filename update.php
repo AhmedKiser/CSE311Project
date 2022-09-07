@@ -1,6 +1,6 @@
 <?php
 
-include 'connect.php';
+include 'config.php';
 $id = $_GET['updateid'];
 if(isset($_POST['submit'])){
     $name = $_POST['name'];

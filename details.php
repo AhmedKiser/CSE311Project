@@ -1,7 +1,7 @@
 
 <?php
 
-include 'connect.php';?>
+include 'config.php';?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,8 +31,8 @@ include 'connect.php';?>
     if(isset($_GET['detailsid'])){
         $id = $_GET['detailsid'];
     
-        $sql = "select * from `crud` where id = $id ";
-        $result = mysqli_query($con,$sql);
+        $sql = "select * from `users` where id = $id ";
+        $result = mysqli_query($conn,$sql);
     
     // $sql = "SELECT * FROM `crud`";
     // $result = mysqli_query($con,$sql);

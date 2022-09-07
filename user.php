@@ -1,6 +1,6 @@
 <?php
 
-include 'connect.php';
+include 'config.php';
 
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
@@ -8,13 +8,13 @@ if(isset($_POST['submit'])){
     $phone = $_POST['phone'] ;
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO `crud`( `name`, `email`, `mobile`, `password`) VALUES ('$name','$email','$phone','$password')";
-    $result = mysqli_query($con,$sql);
+    $sql = "INSERT INTO `users`( `name`, `email`, `mobile`, `password`) VALUES ('$name','$email','$phone','$password')";
+    $result = mysqli_query($conn,$sql);
     if($result){
         // echo "Data inserted successful";
         header('location:display.php');
     }else
-        die(mysqli_error($con));
+        die(mysqli_error($conn));
 }
 
 

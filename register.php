@@ -6,21 +6,20 @@ $username_err = $password_err = $confirm_password_err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    // Check if username is empty
+    
     if(empty(trim($_POST["username"]))){
         $username_err = "Username cannot be blank";
     }
     else{
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT id FROM users WHERE name = ?";
         $stmt = mysqli_prepare($conn, $sql);
         if($stmt)
         {
             mysqli_stmt_bind_param($stmt, "s", $param_username);
 
-            // Set the value of param username
+          
             $param_username = trim($_POST['username']);
 
-            // Try to execute this statement
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1)
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     mysqli_stmt_close($stmt);
 
 
-// Check for password
+
 if(empty(trim($_POST['password']))){
     $password_err = "Password cannot be blank";
 }
@@ -51,26 +50,24 @@ else{
     $password = trim($_POST['password']);
 }
 
-// Check for confirm password field
 if(trim($_POST['password']) !=  trim($_POST['confirm_password'])){
     $password_err = "Passwords should match";
 }
 
 
-// If there were no errors, go ahead and insert into the database
 if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
 {
-    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    $sql = "INSERT INTO users (name, password) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     if ($stmt)
     {
         mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
-        // Set these parameters
+       
         $param_username = $username;
         $param_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Try to execute the query
+        
         if (mysqli_stmt_execute($stmt))
         {
             header("location: login.php");
@@ -103,7 +100,7 @@ mysqli_close($conn);
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Php Login System</a>
+  <a class="navbar-brand" href="#">online classroom management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -1,7 +1,7 @@
 
 <?php
 
-include 'connect.php';?>
+include 'config.php';?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,8 +28,8 @@ include 'connect.php';?>
   <tbody>
 
     <?php
-    $sql = "SELECT * FROM `crud`";
-    $result = mysqli_query($con,$sql);
+    $sql = "SELECT * FROM `users`";
+    $result = mysqli_query($conn,$sql);
     if($result){
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
